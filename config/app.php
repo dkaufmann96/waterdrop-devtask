@@ -193,6 +193,6 @@ return [
     | This is the secret needed to be passed with each request as the authorization header
     |
     */
-    'secret' => env('AUTHORIZATION_SECRET')
+    'secret' => env('VITE_AUTHORIZATION_SECRET')
 
 ];
