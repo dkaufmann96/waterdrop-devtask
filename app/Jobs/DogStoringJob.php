@@ -13,13 +13,21 @@ class DogStoringJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected array $dogData;
+
+    public function __construct(array $dogData)
+    {
+        $this->dogData = $dogData;
+    }
+
+
     /**
      * Execute the job.
      */
-    public function handle(array $dogData): void
+    public function handle(): void
     {
         sleep(10);
-        $dog = new Dog($dogData);
+        $dog = new Dog($this->dogData);
         $dog->save();
     }
 }
