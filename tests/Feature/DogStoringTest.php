@@ -17,7 +17,7 @@ class DogStoringTest extends TestCase
     {
         $data = [
             'name' => $this->faker->name,
-            'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
+            'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
         $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
@@ -30,7 +30,7 @@ class DogStoringTest extends TestCase
     {
         $data = [
             'name' => Str::random(255),
-            'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
+            'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
         $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
@@ -43,7 +43,7 @@ class DogStoringTest extends TestCase
     {
         $data = [
             'name' => Str::random(256),
-            'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
+            'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
         $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
@@ -70,7 +70,7 @@ class DogStoringTest extends TestCase
     public function testStoringDogUnauthorized() {
         $data = [
             'name' => Str::random(255),
-            'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
+            'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
         $response = $this->postJson('api/dogs', $data);
