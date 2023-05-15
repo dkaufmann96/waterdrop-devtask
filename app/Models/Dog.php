@@ -10,6 +10,12 @@ class Dog extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'data'];
+
+    protected $casts = [
+        'data' => 'json'
+    ];
+
     protected function data(): Attribute
     {
         return Attribute::make(
