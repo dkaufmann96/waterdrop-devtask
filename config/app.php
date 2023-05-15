@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -184,5 +184,15 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authorization Secret
+    |--------------------------------------------------------------------------
+    |
+    | This is the secret needed to be passed with each request as the authorization header
+    |
+    */
+    'secret' => env('AUTHORIZATION_SECRET')
 
 ];

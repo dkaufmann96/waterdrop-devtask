@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('dogs', DogController::class)->only(['index', 'store']);
+Route::resource('dogs', DogController::class)->only(['index', 'store'])->middleware('auth.secret');
