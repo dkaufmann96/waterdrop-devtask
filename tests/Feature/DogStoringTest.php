@@ -20,7 +20,7 @@ class DogStoringTest extends TestCase
             'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
         ];
 
-        $response = $this->postJson('api/dogs', $data);
+        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(200);
         Queue::assertPushed(DogStoringJob::class);
@@ -33,7 +33,7 @@ class DogStoringTest extends TestCase
             'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
         ];
 
-        $response = $this->postJson('api/dogs', $data);
+        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(200);
         Queue::assertPushed(DogStoringJob::class);
@@ -46,7 +46,7 @@ class DogStoringTest extends TestCase
             'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
         ];
 
-        $response = $this->postJson('api/dogs', $data);
+        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors('name');
@@ -60,11 +60,23 @@ class DogStoringTest extends TestCase
             'data' => 'invalid'
         ];
 
-        $response = $this->postJson('api/dogs', $data);
+        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors('data');
         Queue::assertNothingPushed();
+    }
+
+    public function testStoringDogUnauthorized() {
+        $data = [
+            'name' => Str::random(255),
+            'data' => json_encode(['breed' => 'Golden Retriever', 'age' => 3])
+        ];
+
+        $response = $this->postJson('api/dogs', $data);
+
+        $response->assertStatus(403);
+        $response->assertExactJson(['error' => 'Unauthorized']);
     }
 
     protected function setUp(): void
