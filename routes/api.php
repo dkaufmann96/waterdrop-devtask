@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('dogs', DogController::class)->only(['index', 'store'])->middleware('auth.secret');
+Route::get('listdogs', 'App\Http\Controllers\DogController@index')->middleware('auth.secret');
+Route::post('adddog', 'App\Http\Controllers\DogController@store')->middleware('auth.secret');

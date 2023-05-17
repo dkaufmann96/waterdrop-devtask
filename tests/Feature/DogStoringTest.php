@@ -20,7 +20,7 @@ class DogStoringTest extends TestCase
             'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
-        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
+        $response = $this->postJson('api/adddog', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(200);
         Queue::assertPushed(DogStoringJob::class);
@@ -33,7 +33,7 @@ class DogStoringTest extends TestCase
             'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
-        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
+        $response = $this->postJson('api/adddog', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(200);
         Queue::assertPushed(DogStoringJob::class);
@@ -46,7 +46,7 @@ class DogStoringTest extends TestCase
             'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
-        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
+        $response = $this->postJson('api/adddog', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors('name');
@@ -60,7 +60,7 @@ class DogStoringTest extends TestCase
             'data' => 'invalid'
         ];
 
-        $response = $this->postJson('api/dogs', $data, ['Authorization' => config('app.secret')]);
+        $response = $this->postJson('api/adddog', $data, ['Authorization' => config('app.secret')]);
 
         $response->assertStatus(422);
         $response->assertJsonValidationErrors('data');
@@ -73,7 +73,7 @@ class DogStoringTest extends TestCase
             'data' => ['breed' => 'Golden Retriever', 'age' => 3]
         ];
 
-        $response = $this->postJson('api/dogs', $data);
+        $response = $this->postJson('api/adddog', $data);
 
         $response->assertStatus(403);
         $response->assertExactJson(['error' => 'Unauthorized']);

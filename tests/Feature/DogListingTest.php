@@ -15,7 +15,7 @@ class DogListingTest extends TestCase
     public function testListingDogs(): void
     {
         $dogs = Dog::factory()->count(50)->create();
-        $response = $this->get('api/dogs', ['Authorization' => config('app.secret')]);
+        $response = $this->get('api/listdogs', ['Authorization' => config('app.secret')]);
         $response->assertOk();
         foreach ($dogs->slice(0, 30) as $key => $dog) {
             $response
@@ -34,7 +34,7 @@ class DogListingTest extends TestCase
         // create 25 dogs with random names and 25 dogs with the name 'Doggo' in order to test filtering by name
         Dog::factory()->count(25)->create();
         $customNameDogs = Dog::factory()->count(25)->customName('Doggo')->create();
-        $response = $this->get('api/dogs?name=Doggo', ['Authorization' => config('app.secret')]);
+        $response = $this->get('api/listdogs?name=Doggo', ['Authorization' => config('app.secret')]);
         $response->assertOk();
         foreach ($customNameDogs as $key => $dog) {
             $response
@@ -50,7 +50,7 @@ class DogListingTest extends TestCase
 
     public function testListingDogUnauthorized() {
         Dog::factory()->count(50)->create();
-        $response = $this->get('api/dogs');
+        $response = $this->get('api/listdogs');
 
         $response->assertStatus(403);
         $response->assertExactJson(['error' => 'Unauthorized']);
