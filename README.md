@@ -1,5 +1,9 @@
 # Waterdop Devtask
 
+## Assumptions
+
+- Dogs have a separate `name` field and a `data` field for the remaining data to make filtering possible.
+
 ## Prerequisites
 
 ### Already Installed:
