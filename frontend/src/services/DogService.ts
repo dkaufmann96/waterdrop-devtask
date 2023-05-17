@@ -1,6 +1,6 @@
 export default {
     async listDogs(secret: String) {
-        const response = await fetch('http://localhost/api/dogs',
+        const response = await fetch('http://localhost/api/listdogs',
             {
                 headers: {
                     Authorization: secret
