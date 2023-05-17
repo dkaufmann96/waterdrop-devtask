@@ -65,19 +65,6 @@ services:
                 - ping
             retries: 3
             timeout: 5s
-    frontend:
-        build:
-            dockerfile: frontend/Dockerfile
-        working_dir: /var/www/html/frontend/
-        env_file:
-            - .env
-        ports:
-            - "8080:8080"
-        volumes:
-            - ./frontend/:/var/www/html/frontend
-        tty: true
-        networks:
-            - sail
 networks:
     sail:
         driver: bridge
