@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "371c6a91-f31f-43ae-9ef9-4b90cc56f4e2",
+		"_postman_id": "bbf37989-d827-4599-ac48-3933f3275ede",
 		"name": "Dogs",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6557647"
 	},
 	"item": [
 		{
@@ -34,6 +35,40 @@
 			"response": []
 		},
 		{
+			"name": "List Dogs and Filter by Name",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "secret",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/listdogs?name=Doggo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"listdogs"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Doggo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Add Dog",
 			"request": {
 				"auth": {
@@ -49,7 +84,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Doggo123\",\n\t\"data\": {\n\t\t\"age\": 11,\n\t\t\"breed\": \"Labrador\"\n\t}\n}",
+					"raw": "{\n\t\"name\": \"Doggo\",\n\t\"data\": {\n\t\t\"age\": 11,\n\t\t\"breed\": \"Labrador\"\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
