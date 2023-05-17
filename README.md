@@ -21,6 +21,9 @@
 4. `./vendor/bin/sail artisan key:generate`
 5. `./vendor/bin/sail artisan migrate`
 6. `./vendor/bin/sail artisan queue:work`
+7. Navigate to the frontend directory in separate terminal: `cd frontend`
+8. `npm install`
+9. `npm run dev`
 
 ## Usage
 
