@@ -18,8 +18,9 @@
    composer install --ignore-platform-reqs
    ```
 3. `./vendor/bin/sail up -d`
-4. `./vendor/bin/sail artisan db:migrate`
-5. `./vendor/bin/sail artisan queue:work`
+4. `./vendor/bin/sail artisan key:generate`
+5. `./vendor/bin/sail artisan migrate`
+6. `./vendor/bin/sail artisan queue:work`
 
 ## Usage
 
